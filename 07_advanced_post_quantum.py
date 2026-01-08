@@ -1,11 +1,18 @@
 """
 🔐 ADVANCED POST-QUANTUM CRYPTOGRAPHY IMPLEMENTATIONS
-Implementasi detail algoritma post-quantum yang dipilih NIST.
+Educational demonstrations of post-quantum algorithm concepts.
 
-Termasuk:
-1. Lattice-based crypto (Kyber concept)
-2. Hash-based signatures (SPHINCS+ concept)
-3. Learning With Errors (LWE) demo
+IMPORTANT DISCLAIMER FOR RESEARCHERS:
+- These are SIMPLIFIED implementations for educational purposes
+- NOT cryptographically secure - do not use in production
+- Real Kyber uses polynomial rings with NTT, not simple matrices
+- Real SPHINCS+ uses WOTS+, FORS, and Merkle trees
+- For production: use liboqs, PQClean, or pqcrypto libraries
+
+References:
+- Kyber: Bos et al. "CRYSTALS-Kyber" (pq-crystals.org)
+- SPHINCS+: Bernstein et al. "SPHINCS+" (sphincs.org)
+- LWE: Regev, O. (2005) "On lattices, learning with errors..."
 """
 
 import numpy as np

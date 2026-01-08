@@ -1,6 +1,6 @@
 """
 =============================================================================
-📚 RSA ENCRYPTION BASICS
+RSA ENCRYPTION BASICS
 =============================================================================
 Demonstrasi bagaimana enkripsi RSA bekerja - enkripsi yang melindungi
 komunikasi internet saat ini.

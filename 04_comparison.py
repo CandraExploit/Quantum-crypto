@@ -1,5 +1,5 @@
 """
-📊 COMPARISON: CLASSICAL vs QUANTUM ATTACKS
+COMPARISON: CLASSICAL vs QUANTUM ATTACKS
 Perbandingan antara serangan klasik dan quantum pada RSA.
 """
 

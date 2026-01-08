@@ -1,5 +1,5 @@
 """
-🛡️ POST-QUANTUM CRYPTOGRAPHY - THE SOLUTION
+POST-QUANTUM CRYPTOGRAPHY - THE SOLUTION
 Implementasi algoritma kriptografi yang tahan terhadap quantum computer.
 NIST telah memilih standar baru yang aman dari serangan quantum.
 """

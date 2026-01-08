@@ -1,5 +1,5 @@
 """
-📈 QUANTUM THREAT VISUALIZATION
+QUANTUM THREAT VISUALIZATION
 Visualisasi interaktif ancaman quantum computing terhadap enkripsi.
 """
 
@@ -16,10 +16,12 @@ plt.style.use('dark_background')
 
 def save_fig(name):
     """Save figure to current directory."""
-    path = f'/Users/macbook/Documents/QuantumCrypto/visualizations/{name}.png'
+    import os
+    script_dir = os.path.dirname(os.path.abspath(__file__))
+    path = os.path.join(script_dir, 'visualizations', f'{name}.png')
     os.makedirs(os.path.dirname(path), exist_ok=True)
     plt.savefig(path, dpi=150, bbox_inches='tight', facecolor='#1a1a2e')
-    print(f"✅ Saved: {path}")
+    print(f"✅ Saved: visualizations/{name}.png")
 
 def classical_complexity(bits):
     """GNFS complexity."""
@@ -72,7 +74,6 @@ def plot_complexity_comparison():
     
     plt.tight_layout()
     save_fig('01_complexity_comparison')
-    # plt.show()  # Disabled for non-interactive mode
 
 def plot_speedup():
     """Plot 2: Quantum speedup factor."""
@@ -108,7 +109,6 @@ def plot_speedup():
     
     plt.tight_layout()
     save_fig('02_quantum_speedup')
-    # plt.show()  # Disabled for non-interactive mode
 
 def plot_timeline():
     """Plot 3: Quantum threat timeline."""
@@ -181,7 +181,6 @@ def plot_timeline():
     
     plt.tight_layout()
     save_fig('03_threat_timeline')
-    # plt.show()  # Disabled for non-interactive mode
 
 def plot_algorithm_comparison():
     """Plot 4: Algorithm security comparison."""
@@ -233,7 +232,6 @@ def plot_algorithm_comparison():
     
     plt.tight_layout()
     save_fig('04_algorithm_comparison')
-    # plt.show()  # Disabled for non-interactive mode
 
 def plot_qubit_progress():
     """Plot 5: Qubit count progress over time."""
@@ -284,7 +282,6 @@ def plot_qubit_progress():
     
     plt.tight_layout()
     save_fig('05_qubit_progress')
-    # plt.show()  # Disabled for non-interactive mode
 
 if __name__ == "__main__":
     print("=" * 60)

@@ -1,6 +1,6 @@
 """
 =============================================================================
-💻 CLASSICAL ATTACK ON RSA (Brute Force Factorization)
+CLASSICAL ATTACK ON RSA (Brute Force Factorization)
 =============================================================================
 Demonstrasi serangan klasik pada RSA menggunakan metode faktorisasi.
 Ini menunjukkan mengapa RSA aman terhadap komputer klasik - butuh waktu
@@ -199,15 +199,17 @@ def estimate_rsa_crack_time():
     Estimasi di atas untuk KOMPUTER KLASIK terbaik yang ada!
     
     Dengan QUANTUM COMPUTER (Shor's Algorithm):
-    ┌─────────────────────────────────────────────────────────────┐
-    │  RSA-2048 bisa dipecahkan dalam HITUNGAN JAM!               │
-    │                                                             │
-    │  Quantum Computer dengan ~4000 qubit sudah CUKUP            │
-    │  untuk memecahkan RSA-2048                                  │
-    │                                                             │
-    │  IBM, Google, dan lainnya sudah memiliki 100+ qubit         │
-    │  Prediksi: 2030-2040 quantum computer akan mengancam RSA    │
-    └─────────────────────────────────────────────────────────────┘
+    ┌─────────────────────────────────────────────────────────────────┐
+    │  Shor's Algorithm memberikan SPEEDUP EKSPONENSIAL              │
+    │  Kompleksitas: O(n³) vs O(exp(n^(1/3))) untuk GNFS             │
+    │                                                                 │
+    │  NAMUN saat ini:                                                │
+    │  • Butuh ~4000 LOGICAL qubits dengan error correction          │
+    │  • Ini setara JUTAAN physical qubits dengan teknologi saat ini │
+    │  • IBM/Google baru memiliki ~1000 physical qubits              │
+    │                                                                 │
+    │  Prediksi: 2030-2040 quantum computer MUNGKIN mengancam RSA    │
+    └─────────────────────────────────────────────────────────────────┘
     """)
 
 
@@ -248,11 +250,12 @@ def complexity_comparison():
       → Butuh triliunan tahun
     
     • Quantum (Shor): ~2048³ ≈ 8.6 × 10^9 operasi
-      → Butuh hitungan jam dengan quantum computer yang cukup besar
+      → Tractable dengan quantum computer yang cukup besar
+      → NAMUN butuh ~4000 logical qubits + error correction (belum ada)
     
     KESIMPULAN:
     Shor's Algorithm memberikan SPEEDUP EKSPONENSIAL!
-    Ini yang membuat quantum computing menjadi ancaman bagi kriptografi.
+    Ancaman ini NYATA tapi timeline-nya masih diperdebatkan (est. 2030-2040).
     """)
 
 

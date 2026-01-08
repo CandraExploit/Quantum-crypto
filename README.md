@@ -1,10 +1,29 @@
-# ⚛️ Quantum Threat to Encryption
+#  Quantum Threat to Encryption
 
 Comprehensive educational project demonstrating why quantum computing threatens current encryption and what solutions exist.
 
+> **Disclaimer**: This is an educational project with simplified implementations. Not for production use.
+
+##  Visualizations
+
+### Classical vs Quantum Complexity
 ![Complexity Comparison](visualizations/01_complexity_comparison.png)
 
-## 🎯 What You'll Learn
+### Quantum Speedup Factor
+![Quantum Speedup](visualizations/02_quantum_speedup.png)
+
+### Threat Timeline
+![Threat Timeline](visualizations/03_threat_timeline.png)
+
+### Algorithm Security Comparison
+![Algorithm Security](visualizations/04_algorithm_comparison.png)
+
+### Qubit Progress
+![Qubit Progress](visualizations/05_qubit_progress.png)
+
+---
+
+##  What You'll Learn
 
 1. **How RSA works** - The encryption protecting the internet
 2. **Why RSA is secure (classically)** - Prime factorization is hard
@@ -34,7 +53,7 @@ QuantumCrypto/
 └── README.md
 ```
 
-## 🚀 Quick Start
+##  Quick Start
 
 ```bash
 # Install dependencies
@@ -50,54 +69,44 @@ python 06_visualizations.py      # Generates charts
 python 07_advanced_post_quantum.py  # Advanced implementations
 ```
 
-## 📊 Key Visualizations
-
-### 1. Classical vs Quantum Complexity
-Shows the exponential gap between classical and quantum factoring.
-
-### 2. Quantum Speedup Factor
-- RSA-512: 10^11x faster
-- RSA-2048: 10^25x faster
-- RSA-4096: 10^36x faster
-
-### 3. Threat Timeline
-From Shor's Algorithm (1994) to predicted Q-Day (~2035).
-
-### 4. Algorithm Security
-Classical vs quantum security levels for different algorithms.
-
-### 5. Qubit Progress
-Racing toward the ~4000 logical qubits needed to break RSA-2048.
-
 ## ⚠️ Key Takeaways
 
-| Encryption | Classical Attack | Quantum Attack |
-|------------|------------------|----------------|
-| RSA-2048 | ~10^18 years | ~8.59 seconds! |
-| AES-256 | ~10^30 years | ~10^15 years (safe!) |
-| Kyber-768 | Safe | Safe ✓ |
-| SPHINCS+ | Safe | Safe ✓ |
+| Encryption | Classical (GNFS) | Quantum (Shor) | Notes |
+|------------|------------------|----------------|-------|
+| RSA-2048 | Sub-exponential | **Polynomial O(n³)** | Requires ~4000 logical qubits with error correction |
+| AES-256 | ~2^256 | ~2^128 (Grover) | Still secure with sufficient margin |
+| Kyber-768 | Secure | Secure | NIST FIPS 203 (ML-KEM) |
+| SPHINCS+ | Secure | Secure | NIST FIPS 205 (SLH-DSA) |
+
+**Important Notes:**
+- The polynomial vs sub-exponential complexity difference is the key threat
+- Current quantum computers (~1000 physical qubits) lack sufficient qubits AND error rates for cryptographic attacks
+- ~4000 logical qubits needed = millions of physical qubits with current technology
+- Timeline for cryptographically-relevant quantum computers remains debated (estimates: 2030-2040)
+- NIST has set 2035 as the deadline to deprecate quantum-vulnerable algorithms
 
 ## 🔐 Post-Quantum Algorithms Covered
 
-| Algorithm | Type | Use Case |
-|-----------|------|----------|
-| **CRYSTALS-Kyber** | Lattice-based | Key Exchange |
-| **CRYSTALS-Dilithium** | Lattice-based | Digital Signatures |
-| **SPHINCS+** | Hash-based | Digital Signatures |
-| **LWE** | Learning With Errors | Encryption basis |
+| Algorithm | Type | Use Case | NIST Standard |
+|-----------|------|----------|---------------|
+| **CRYSTALS-Kyber** | Lattice-based | Key Exchange | FIPS 203 (ML-KEM) |
+| **CRYSTALS-Dilithium** | Lattice-based | Digital Signatures | FIPS 204 (ML-DSA) |
+| **SPHINCS+** | Hash-based | Digital Signatures | FIPS 205 (SLH-DSA) |
+| **LWE** | Learning With Errors | Encryption basis | - |
 
-## 📚 Resources
+## 📚 References
 
-- [Qiskit Textbook](https://qiskit.org/learn)
+- Shor, P.W. (1994). "Algorithms for quantum computation: discrete logarithms and factoring"
+- Gidney & Ekerå (2021). "How to factor 2048 bit RSA integers in 8 hours using 20 million noisy qubits"
 - [NIST Post-Quantum Cryptography](https://csrc.nist.gov/projects/post-quantum-cryptography)
 - [IBM Quantum](https://quantum-computing.ibm.com/)
 - [Open Quantum Safe](https://openquantumsafe.org/)
+- [Qiskit](https://qiskit.org/)
 
-## 📜 License
+## License
 
-Educational use only. MIT License.
+MIT License - Educational use.
 
 ---
 
-**⚠️ Action Required**: Migrate to post-quantum cryptography before "Q-Day" (~2030-2035)
+**⚠️ Important**: This project demonstrates the *theoretical* threat. Current quantum computers cannot break RSA-2048. Timeline estimates vary (2030-2040). Begin planning migration to post-quantum cryptography now.

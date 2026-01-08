@@ -1,13 +1,18 @@
 """
 =============================================================================
-⚛️ SHOR'S ALGORITHM - THE QUANTUM THREAT
+SHOR'S ALGORITHM - THE QUANTUM THREAT
 =============================================================================
-Implementasi dan simulasi Shor's Algorithm menggunakan Qiskit.
+Educational demonstration of Shor's Algorithm concepts using Qiskit.
 
-Shor's Algorithm adalah algoritma quantum yang dapat memfaktorkan
-bilangan besar dalam waktu POLINOMIAL - ancaman nyata untuk RSA!
+IMPORTANT DISCLAIMER FOR RESEARCHERS:
+- The quantum circuit in this demo is SIMPLIFIED for educational purposes
+- It does NOT implement full controlled modular exponentiation
+- The "classical simulation" correctly demonstrates Shor's mathematical logic
+- Full Shor's implementation requires O(n³) gates for modular exponentiation
+- See: Gidney & Ekerå (2021) for realistic resource estimates
 
-Ditemukan oleh Peter Shor (1994) di MIT.
+Reference: Shor, P.W. (1994). "Algorithms for quantum computation: 
+           discrete logarithms and factoring" FOCS '94
 
 Author: Quantum Crypto Education
 =============================================================================
@@ -254,9 +259,13 @@ def create_shors_circuit_demo(N: int, a: int, n_count: int = 4) -> 'QuantumCircu
     
     qc.barrier()
     
-    # Inverse QFT on counting register
-    iqft = synth_qft_full(n_count).inverse()
-    qc.append(iqft, qr_count)
+    # Inverse QFT on counting register (manual implementation for compatibility)
+    for i in range(n_count // 2):
+        qc.swap(qr_count[i], qr_count[n_count - i - 1])
+    for i in range(n_count):
+        for j in range(i):
+            qc.cp(-np.pi / 2 ** (i - j), qr_count[j], qr_count[i])
+        qc.h(qr_count[i])
     
     qc.barrier()
     
@@ -353,10 +362,15 @@ def demo_full_factorization():
     using quantum parallelism and interference!
     
     For RSA-2048 (617 digit number):
-    • Classical: ~10^30 operations (trillions of years)
-    • Quantum:   ~10^10 operations (hours/days)
+    • Classical (GNFS): sub-exponential complexity → computationally infeasible
+    • Quantum (Shor):   polynomial O(n³) complexity → tractable
     
-    This is why quantum computing is an EXISTENTIAL THREAT to RSA!
+    IMPORTANT CAVEAT:
+    Current quantum computers (~1000 physical qubits) are NOT sufficient.
+    Estimates suggest ~4000 logical qubits with error correction needed,
+    which translates to millions of physical qubits with current technology.
+    
+    This is why quantum computing is a FUTURE THREAT to RSA.
     """)
 
 
