@@ -24,7 +24,7 @@ For production post-quantum cryptography, use established libraries such as:
 
 ---
 
-## 📊 Visualizations
+##  Visualizations
 
 ### Classical vs Quantum Computational Complexity
 ![Complexity Comparison](visualizations/01_complexity_comparison.png)
@@ -77,7 +77,7 @@ Quantum-crypto/
 
 ---
 
-## 🚀 Quick Start
+##  Quick Start
 
 ```bash
 # Install dependencies
@@ -171,7 +171,7 @@ Estimates for the quantum resources required to break RSA-2048 vary significantl
 
 ---
 
-## 🛡️ Post-Quantum Cryptography (NIST Standards)
+##  Post-Quantum Cryptography (NIST Standards)
 
 The following algorithms have been standardized by NIST as part of the Post-Quantum Cryptography Standardization Process:
 
@@ -193,7 +193,7 @@ As with all cryptography, security assumptions may evolve as new attacks are dis
 
 ---
 
-## 🔬 What This Project Implements (Educational Only)
+##  What This Project Implements (Educational Only)
 
 | Module | Description | Limitations |
 |--------|-------------|-------------|
