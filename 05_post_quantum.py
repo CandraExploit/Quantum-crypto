@@ -1,7 +1,7 @@
 """
 POST-QUANTUM CRYPTOGRAPHY - THE SOLUTION
-Implementasi algoritma kriptografi yang tahan terhadap quantum computer.
-NIST telah memilih standar baru yang aman dari serangan quantum.
+Cryptographic algorithm implementations resistant to quantum computers.
+NIST has selected new standards that are safe from quantum attacks.
 """
 
 import hashlib
@@ -36,19 +36,19 @@ def hash_based_verify(message: bytes, signature: bytes, public_key: bytes) -> bo
 def aes256_demo():
     """Demonstrate AES-256 (quantum-safe symmetric encryption)."""
     print("\n" + "=" * 60)
-    print("🔐 AES-256: QUANTUM-SAFE SYMMETRIC ENCRYPTION")
+    print("AES-256: QUANTUM-SAFE SYMMETRIC ENCRYPTION")
     print("=" * 60)
     print("""
-    AES-256 tetap AMAN dari quantum computer!
+    AES-256 remains SAFE from quantum computers!
     
-    Mengapa?
-    • Grover's Algorithm hanya memberikan speedup √N
-    • AES-256 dengan Grover = efektif AES-128
-    • Masih butuh 2^128 operasi = AMAN
+    Why?
+    • Grover's Algorithm only provides √N speedup
+    • AES-256 with Grover = effectively AES-128
+    • Still requires 2^128 operations = SAFE
     
-    Rekomendasi:
-    • Gunakan AES-256 untuk enkripsi data
-    • Kombinasikan dengan post-quantum key exchange
+    Recommendation:
+    • Use AES-256 for data encryption
+    • Combine with post-quantum key exchange
     """)
 
 # ============= LATTICE-BASED CRYPTO (Kyber concept) =============
@@ -56,17 +56,17 @@ def aes256_demo():
 def lattice_demo():
     """Demonstrate lattice-based cryptography concepts."""
     print("\n" + "=" * 60)
-    print("💎 CRYSTALS-KYBER: LATTICE-BASED KEY ENCAPSULATION")
+    print("CRYSTALS-KYBER: LATTICE-BASED KEY ENCAPSULATION")
     print("=" * 60)
     print("""
-    Kyber dipilih NIST sebagai standar post-quantum key exchange!
+    Kyber selected by NIST as post-quantum key exchange standard!
     
-    Keamanan berdasarkan:
+    Security based on:
     • Learning With Errors (LWE) problem
-    • Sulit untuk classical DAN quantum computer
+    • Hard for both classical AND quantum computers
     
     Install library:
-    pip install pqcrypto  # atau
+    pip install pqcrypto  # or
     pip install liboqs-python
     """)
 
@@ -101,7 +101,7 @@ if __name__ == "__main__":
     
     # Demo hash-based signing
     print("\n" + "=" * 60)
-    print("✍️ HASH-BASED SIGNATURE DEMO")
+    print("HASH-BASED SIGNATURE DEMO")
     print("=" * 60)
     
     priv, pub = hash_based_keypair()
@@ -111,12 +111,12 @@ if __name__ == "__main__":
     print(f"Message: {message.decode()}")
     print(f"Public Key: {pub.hex()[:32]}...")
     print(f"Signature: {signature.hex()}")
-    print("✅ Signature created (quantum-resistant)")
+    print("[OK] Signature created (quantum-resistant)")
     
     print("""
     
-    🎯 ACTION ITEMS:
-    ════════════════
+    ACTION ITEMS:
+    ================
     
     1. Start learning post-quantum algorithms
     2. Test with libraries: liboqs, pqcrypto

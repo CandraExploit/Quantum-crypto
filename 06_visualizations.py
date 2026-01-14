@@ -1,6 +1,6 @@
 """
 QUANTUM THREAT VISUALIZATION
-Visualisasi interaktif ancaman quantum computing terhadap enkripsi.
+Interactive visualizations of quantum computing threats to encryption.
 """
 
 import matplotlib
@@ -21,7 +21,7 @@ def save_fig(name):
     path = os.path.join(script_dir, 'visualizations', f'{name}.png')
     os.makedirs(os.path.dirname(path), exist_ok=True)
     plt.savefig(path, dpi=150, bbox_inches='tight', facecolor='#1a1a2e')
-    print(f"✅ Saved: visualizations/{name}.png")
+    print(f"[OK] Saved: visualizations/{name}.png")
 
 def classical_complexity(bits):
     """GNFS complexity."""
@@ -65,7 +65,7 @@ def plot_complexity_comparison():
     
     ax.set_xlabel('Key Size (bits)', fontsize=14, color='white')
     ax.set_ylabel('Operations Required (log scale)', fontsize=14, color='white')
-    ax.set_title('⚛️ THE QUANTUM THREAT: Classical vs Quantum Complexity', 
+    ax.set_title('THE QUANTUM THREAT: Classical vs Quantum Complexity', 
                  fontsize=16, fontweight='bold', color='white', pad=20)
     ax.legend(fontsize=12, loc='upper left')
     ax.grid(True, alpha=0.2)
@@ -102,7 +102,7 @@ def plot_speedup():
     
     ax.set_xlabel('Key Size (bits)', fontsize=14, color='white')
     ax.set_ylabel('Quantum Speedup Factor (log scale)', fontsize=14, color='white')
-    ax.set_title('🚀 QUANTUM SPEEDUP: How Much Faster is Shor\'s Algorithm?', 
+    ax.set_title('QUANTUM SPEEDUP: How Much Faster is Shor\'s Algorithm?', 
                  fontsize=16, fontweight='bold', color='white', pad=20)
     ax.grid(True, alpha=0.2)
     ax.set_xlim(64, 4096)
@@ -155,7 +155,7 @@ def plot_timeline():
     
     # Danger zone
     ax.axvspan(2030, 2040, alpha=0.2, color='red')
-    ax.text(2035, 0.1, '⚠️ DANGER ZONE', ha='center', fontsize=14, 
+    ax.text(2035, 0.1, '[!] DANGER ZONE', ha='center', fontsize=14, 
            color='red', fontweight='bold')
     
     ax.set_xlim(1990, 2042)
@@ -208,7 +208,7 @@ def plot_algorithm_comparison():
                f'{val}', ha='center', va='bottom', color='white', fontsize=10)
     
     for bar, val in zip(bars2, quantum_security):
-        label = f'{val}' if val > 0 else '❌'
+        label = f'{val}' if val > 0 else 'X'
         ax.text(bar.get_x() + bar.get_width()/2, bar.get_height() + 3,
                label, ha='center', va='bottom', color='white', fontsize=10)
     
@@ -218,7 +218,7 @@ def plot_algorithm_comparison():
     
     ax.set_xlabel('Algorithm', fontsize=14, color='white')
     ax.set_ylabel('Security Level (bits)', fontsize=14, color='white')
-    ax.set_title('🔒 ALGORITHM SECURITY: Classical vs Quantum Era', 
+    ax.set_title('ALGORITHM SECURITY: Classical vs Quantum Era', 
                  fontsize=16, fontweight='bold', color='white', pad=20)
     ax.set_xticks(x)
     ax.set_xticklabels(algorithms, rotation=45, ha='right')
@@ -273,7 +273,7 @@ def plot_qubit_progress():
     
     ax.set_xlabel('Year', fontsize=14, color='white')
     ax.set_ylabel('Number of Qubits (log scale)', fontsize=14, color='white')
-    ax.set_title('📈 QUBIT PROGRESS: Racing Toward Cryptographic Relevance', 
+    ax.set_title('QUBIT PROGRESS: Racing Toward Cryptographic Relevance', 
                  fontsize=16, fontweight='bold', color='white', pad=20)
     ax.legend(fontsize=12)
     ax.grid(True, alpha=0.2)
@@ -295,5 +295,5 @@ if __name__ == "__main__":
     plot_qubit_progress()
     
     print("\n" + "=" * 60)
-    print("✅ All visualizations saved to: visualizations/")
+    print("[OK] All visualizations saved to: visualizations/")
     print("=" * 60)

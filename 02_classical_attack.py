@@ -2,9 +2,9 @@
 =============================================================================
 CLASSICAL ATTACK ON RSA (Brute Force Factorization)
 =============================================================================
-Demonstrasi serangan klasik pada RSA menggunakan metode faktorisasi.
-Ini menunjukkan mengapa RSA aman terhadap komputer klasik - butuh waktu
-yang SANGAT lama untuk memfaktorkan bilangan besar.
+Demonstration of classical attack on RSA using factorization methods.
+This shows why RSA is secure against classical computers - it takes
+a VERY long time to factor large numbers.
 
 Author: Quantum Crypto Education
 =============================================================================
@@ -18,19 +18,19 @@ import random
 
 def trial_division(n: int, verbose: bool = True) -> Tuple[Optional[int], Optional[int], float, int]:
     """
-    Faktorisasi menggunakan trial division (brute force).
+    Factorization using trial division (brute force).
     
-    Ini adalah metode paling sederhana - coba semua bilangan
-    dari 2 sampai √n.
+    This is the simplest method - try all numbers
+    from 2 to √n.
     
     Returns:
-        - p: faktor pertama (atau None jika prima)
-        - q: faktor kedua (atau None jika prima)
-        - time_taken: waktu yang dibutuhkan
-        - attempts: jumlah percobaan
+        - p: first factor (or None if prime)
+        - q: second factor (or None if prime)
+        - time_taken: time required
+        - attempts: number of attempts
     """
     if verbose:
-        print(f"\n🔍 Mencoba memfaktorkan n = {n}")
+        print(f"\nTrying to factorize n = {n}")
         print("-" * 50)
     
     start_time = time.time()
@@ -51,7 +51,7 @@ def trial_division(n: int, verbose: bool = True) -> Tuple[Optional[int], Optiona
         if n % i == 0:
             time_taken = time.time() - start_time
             if verbose:
-                print(f"✅ Factor found! {n} = {i} × {n // i}")
+                print(f"[OK] Factor found! {n} = {i} × {n // i}")
                 print(f"   Attempts: {attempts:,}")
                 print(f"   Time: {time_taken:.6f} seconds")
             return i, n // i, time_taken, attempts
@@ -63,7 +63,7 @@ def trial_division(n: int, verbose: bool = True) -> Tuple[Optional[int], Optiona
     
     time_taken = time.time() - start_time
     if verbose:
-        print(f"❌ No factors found - {n} is prime!")
+        print(f"[X] No factors found - {n} is prime!")
         print(f"   Attempts: {attempts:,}")
         print(f"   Time: {time_taken:.6f} seconds")
     return None, None, time_taken, attempts
@@ -71,15 +71,15 @@ def trial_division(n: int, verbose: bool = True) -> Tuple[Optional[int], Optiona
 
 def pollard_rho(n: int, verbose: bool = True) -> Tuple[Optional[int], Optional[int], float, int]:
     """
-    Pollard's Rho algorithm - lebih efisien dari trial division.
+    Pollard's Rho algorithm - more efficient than trial division.
     
-    Menggunakan cycle detection (Floyd's algorithm) untuk
-    menemukan faktor lebih cepat.
+    Uses cycle detection (Floyd's algorithm) to
+    find factors faster.
     
-    Tetap EKSPONENSIAL dalam kompleksitas!
+    Still EXPONENTIAL in complexity!
     """
     if verbose:
-        print(f"\n🔍 Pollard's Rho pada n = {n}")
+        print(f"\nPollard's Rho on n = {n}")
         print("-" * 50)
     
     start_time = time.time()
@@ -107,24 +107,24 @@ def pollard_rho(n: int, verbose: bool = True) -> Tuple[Optional[int], Optional[i
     
     if d != n and d != 1:
         if verbose:
-            print(f"✅ Factor found! {n} = {d} × {n // d}")
+            print(f"[OK] Factor found! {n} = {d} × {n // d}")
             print(f"   Iterations: {attempts:,}")
             print(f"   Time: {time_taken:.6f} seconds")
         return d, n // d, time_taken, attempts
     
     if verbose:
-        print(f"❌ Failed to find factors")
+        print(f"[X] Failed to find factors")
     return None, None, time_taken, attempts
 
 
 def demo_classical_attack():
-    """Demo serangan klasik pada berbagai ukuran RSA."""
+    """Demo classical attack on various RSA sizes."""
     
     print("\n" + "=" * 70)
-    print("⚔️  CLASSICAL ATTACK DEMONSTRATION")
+    print("CLASSICAL ATTACK DEMONSTRATION")
     print("=" * 70)
     
-    # Test cases dengan ukuran berbeda
+    # Test cases with different sizes
     test_cases = [
         ("Tiny (8-bit)", 143),           # 11 × 13
         ("Small (16-bit)", 10403),        # 101 × 103
@@ -136,7 +136,7 @@ def demo_classical_attack():
     
     for name, n in test_cases:
         print(f"\n{'='*60}")
-        print(f"📊 Test: {name}")
+        print(f"Test: {name}")
         print(f"   n = {n} ({n.bit_length()} bits)")
         print("=" * 60)
         
@@ -158,7 +158,7 @@ def demo_classical_attack():
     
     # Summary
     print("\n" + "=" * 70)
-    print("📈 RESULTS SUMMARY")
+    print("RESULTS SUMMARY")
     print("=" * 70)
     print(f"{'Size':<20} {'Bits':>6} {'Trial Div Time':>15} {'Pollard Time':>15}")
     print("-" * 70)
@@ -172,7 +172,7 @@ def estimate_rsa_crack_time():
     """Estimate time to crack real RSA keys."""
     
     print("\n" + "=" * 70)
-    print("⏱️  ESTIMATED TIME TO CRACK RSA (Classical Computer)")
+    print("ESTIMATED TIME TO CRACK RSA (Classical Computer)")
     print("=" * 70)
     
     # Assumptions based on current technology
@@ -194,21 +194,21 @@ def estimate_rsa_crack_time():
     
     print("""
     
-    ⚠️  PENTING: 
+    [!] IMPORTANT: 
     
-    Estimasi di atas untuk KOMPUTER KLASIK terbaik yang ada!
+    The estimates above are for the BEST available CLASSICAL COMPUTERS!
     
-    Dengan QUANTUM COMPUTER (Shor's Algorithm):
+    With QUANTUM COMPUTER (Shor's Algorithm):
     ┌─────────────────────────────────────────────────────────────────┐
-    │  Shor's Algorithm memberikan SPEEDUP EKSPONENSIAL              │
-    │  Kompleksitas: O(n³) vs O(exp(n^(1/3))) untuk GNFS             │
+    │  Shor's Algorithm provides EXPONENTIAL SPEEDUP                  │
+    │  Complexity: O(n³) vs O(exp(n^(1/3))) for GNFS                  │
     │                                                                 │
-    │  NAMUN saat ini:                                                │
-    │  • Butuh ~4000 LOGICAL qubits dengan error correction          │
-    │  • Ini setara JUTAAN physical qubits dengan teknologi saat ini │
-    │  • IBM/Google baru memiliki ~1000 physical qubits              │
+    │  HOWEVER currently:                                             │
+    │  • Requires ~4000 LOGICAL qubits with error correction          │
+    │  • This equals MILLIONS of physical qubits with current tech    │
+    │  • IBM/Google currently have ~1000 physical qubits              │
     │                                                                 │
-    │  Prediksi: 2030-2040 quantum computer MUNGKIN mengancam RSA    │
+    │  Prediction: 2030-2040 quantum computers MAY threaten RSA       │
     └─────────────────────────────────────────────────────────────────┘
     """)
 
@@ -217,7 +217,7 @@ def complexity_comparison():
     """Compare classical vs quantum complexity."""
     
     print("\n" + "=" * 70)
-    print("📊 COMPLEXITY COMPARISON: CLASSICAL vs QUANTUM")
+    print("COMPLEXITY COMPARISON: CLASSICAL vs QUANTUM")
     print("=" * 70)
     
     print("""
@@ -234,28 +234,28 @@ def complexity_comparison():
     │  SHOR'S ALGORITHM             │  O(k³) = O((log n)³)  │  QUANTUM   │
     └────────────────────────────────────────────────────────────────────┘
     
-    PERBEDAAN KUNCI:
+    KEY DIFFERENCE:
     
-    • Classical: EKSPONENSIAL dalam ukuran bit (k)
-      - Waktu meningkat DRASTIS dengan ukuran key
-      - RSA-2048 praktis tidak bisa dipecahkan
+    • Classical: EXPONENTIAL in bit size (k)
+      - Time increases DRASTICALLY with key size
+      - RSA-2048 is practically impossible to break
     
-    • Quantum (Shor): POLINOMIAL dalam ukuran bit (k)
-      - Waktu meningkat LAMBAT dengan ukuran key
-      - RSA-2048 bisa dipecahkan dalam waktu wajar!
+    • Quantum (Shor): POLYNOMIAL in bit size (k)
+      - Time increases SLOWLY with key size
+      - RSA-2048 can be broken in reasonable time!
     
-    Contoh untuk RSA-2048 (k = 2048):
+    Example for RSA-2048 (k = 2048):
     
-    • Classical (GNFS): ~2^100 operasi ≈ 10^30 operasi
-      → Butuh triliunan tahun
+    • Classical (GNFS): ~2^100 operations ≈ 10^30 operations
+      → Takes trillions of years
     
-    • Quantum (Shor): ~2048³ ≈ 8.6 × 10^9 operasi
-      → Tractable dengan quantum computer yang cukup besar
-      → NAMUN butuh ~4000 logical qubits + error correction (belum ada)
+    • Quantum (Shor): ~2048³ ≈ 8.6 × 10^9 operations
+      → Tractable with large enough quantum computer
+      → HOWEVER requires ~4000 logical qubits + error correction (not yet available)
     
-    KESIMPULAN:
-    Shor's Algorithm memberikan SPEEDUP EKSPONENSIAL!
-    Ancaman ini NYATA tapi timeline-nya masih diperdebatkan (est. 2030-2040).
+    CONCLUSION:
+    Shor's Algorithm provides EXPONENTIAL SPEEDUP!
+    This threat is REAL but the timeline is still debated (est. 2030-2040).
     """)
 
 
@@ -270,5 +270,5 @@ if __name__ == "__main__":
     complexity_comparison()
     
     print("\n" + "=" * 70)
-    print("➡️  NEXT: Lihat 03_shors_algorithm.py untuk serangan QUANTUM!")
+    print("--> NEXT: See 03_shors_algorithm.py for QUANTUM attack!")
     print("=" * 70)

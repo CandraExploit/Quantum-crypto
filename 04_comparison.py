@@ -1,6 +1,6 @@
 """
 COMPARISON: CLASSICAL vs QUANTUM ATTACKS
-Perbandingan antara serangan klasik dan quantum pada RSA.
+Comparison between classical and quantum attacks on RSA.
 """
 
 import math
@@ -28,7 +28,7 @@ def ops_to_time(ops: float) -> str:
 
 if __name__ == "__main__":
     print("=" * 70)
-    print("📊 CLASSICAL vs QUANTUM COMPARISON")
+    print("CLASSICAL vs QUANTUM COMPARISON")
     print("=" * 70)
     
     sizes = [512, 1024, 2048, 4096]
@@ -40,5 +40,5 @@ if __name__ == "__main__":
         q = quantum_complexity(bits)
         print(f"RSA-{bits:<5} {ops_to_time(c):<25} {ops_to_time(q):<20} {c/q:.2e}")
     
-    print("\n⚠️  Quantum provides EXPONENTIAL speedup!")
+    print("\n[!] Quantum provides EXPONENTIAL speedup!")
     print("   RSA-2048 safe classically, but vulnerable to quantum!")

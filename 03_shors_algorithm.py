@@ -32,7 +32,7 @@ try:
     QISKIT_AVAILABLE = True
 except ImportError:
     QISKIT_AVAILABLE = False
-    print("⚠️  Qiskit not installed. Install with: pip install qiskit qiskit-aer")
+    print("[!] Qiskit not installed. Install with: pip install qiskit qiskit-aer")
     print("   Running in educational/simulation mode only.\n")
 
 
@@ -40,7 +40,7 @@ def explain_shors_algorithm():
     """Explain how Shor's Algorithm works."""
     
     print("\n" + "=" * 70)
-    print("📚 HOW SHOR'S ALGORITHM WORKS")
+    print("HOW SHOR'S ALGORITHM WORKS")
     print("=" * 70)
     
     print("""
@@ -106,7 +106,7 @@ def classical_period_finding(a: int, N: int, verbose: bool = True) -> int:
     This is O(r) - slow for large r.
     """
     if verbose:
-        print(f"\n🔍 Classical period finding for a={a}, N={N}")
+        print(f"\nClassical period finding for a={a}, N={N}")
     
     r = 1
     current = a % N
@@ -211,15 +211,15 @@ def classical_shors_simulation(N: int, verbose: bool = True) -> Tuple[Optional[i
         # Return non-trivial factors
         if factor1 not in [1, N]:
             if verbose:
-                print(f"\n   ✅ SUCCESS! {N} = {factor1} × {N // factor1}")
+                print(f"\n   [OK] SUCCESS! {N} = {factor1} × {N // factor1}")
             return factor1, N // factor1
         if factor2 not in [1, N]:
             if verbose:
-                print(f"\n   ✅ SUCCESS! {N} = {factor2} × {N // factor2}")
+                print(f"\n   [OK] SUCCESS! {N} = {factor2} × {N // factor2}")
             return factor2, N // factor2
     
     if verbose:
-        print(f"\n   ❌ Failed after {max_attempts} attempts")
+        print(f"\n   [X] Failed after {max_attempts} attempts")
     return None, None
 
 
@@ -231,7 +231,7 @@ def create_shors_circuit_demo(N: int, a: int, n_count: int = 4) -> 'QuantumCircu
     controlled modular exponentiation which is very complex.
     """
     if not QISKIT_AVAILABLE:
-        print("⚠️  Qiskit required for circuit creation")
+        print("[!] Qiskit required for circuit creation")
         return None
     
     # Create circuit
@@ -279,12 +279,12 @@ def demo_quantum_period_finding():
     """Demonstrate quantum period finding concept."""
     
     if not QISKIT_AVAILABLE:
-        print("\n⚠️  Install Qiskit for quantum circuit demo:")
+        print("\n[!] Install Qiskit for quantum circuit demo:")
         print("   pip install qiskit qiskit-aer")
         return
     
     print("\n" + "=" * 60)
-    print("⚛️ QUANTUM PERIOD FINDING DEMONSTRATION")
+    print("QUANTUM PERIOD FINDING DEMONSTRATION")
     print("=" * 60)
     
     # Simple example: factor 15
@@ -336,7 +336,7 @@ def demo_full_factorization():
     """Demo complete factorization using simulated Shor's."""
     
     print("\n" + "=" * 70)
-    print("🔓 FULL FACTORIZATION DEMO (Classical Simulation of Shor's)")
+    print("FULL FACTORIZATION DEMO (Classical Simulation of Shor's)")
     print("=" * 70)
     
     test_numbers = [15, 21, 35, 77, 91, 143, 221, 323]
@@ -347,10 +347,10 @@ def demo_full_factorization():
     for N in test_numbers:
         p, q = classical_shors_simulation(N, verbose=False)
         if p and q:
-            status = "✅ Factored"
+            status = "[OK] Factored"
             print(f"{N:>6} {p:>6} {q:>6} {status:>20}")
         else:
-            print(f"{N:>6} {'?':>6} {'?':>6} {'❌ Failed':>20}")
+            print(f"{N:>6} {'?':>6} {'?':>6} {'[X] Failed':>20}")
     
     print("""
     
@@ -395,6 +395,6 @@ if __name__ == "__main__":
     classical_shors_simulation(15, verbose=True)
     
     print("\n" + "=" * 70)
-    print("➡️  NEXT: See 04_comparison.py for visual comparison")
-    print("➡️  NEXT: See 05_post_quantum.py for solutions!")
+    print("--> NEXT: See 04_comparison.py for visual comparison")
+    print("--> NEXT: See 05_post_quantum.py for solutions!")
     print("=" * 70)

@@ -2,11 +2,11 @@
 =============================================================================
 RSA ENCRYPTION BASICS
 =============================================================================
-Demonstrasi bagaimana enkripsi RSA bekerja - enkripsi yang melindungi
-komunikasi internet saat ini.
+Demonstration of how RSA encryption works - the encryption protecting
+today's internet communications.
 
-RSA (Rivest-Shamir-Adleman) adalah enkripsi asimetris yang keamanannya
-bergantung pada sulitnya memfaktorkan bilangan prima yang sangat besar.
+RSA (Rivest-Shamir-Adleman) is an asymmetric encryption whose security
+depends on the difficulty of factoring very large prime numbers.
 
 Author: Quantum Crypto Education
 =============================================================================
@@ -64,9 +64,9 @@ def generate_rsa_keys(bits: int = 8) -> Tuple[Tuple[int, int], Tuple[int, int], 
     Returns:
         - public_key: (e, n)
         - private_key: (d, n)
-        - primes: (p, q) - untuk demonstrasi, normalnya ini RAHASIA!
+        - primes: (p, q) - for demonstration, normally this is SECRET!
     """
-    print("\n🔐 GENERATING RSA KEYS...")
+    print("\nGENERATING RSA KEYS...")
     print("=" * 50)
     
     # Step 1: Generate two distinct prime numbers
@@ -98,10 +98,10 @@ def generate_rsa_keys(bits: int = 8) -> Tuple[Tuple[int, int], Tuple[int, int], 
     d = mod_inverse(e, phi)
     print(f"✓ Private exponent d = {d}")
     
-    print("\n📋 KEY SUMMARY:")
-    print(f"   🔓 Public Key  (e, n) = ({e}, {n})")
-    print(f"   🔒 Private Key (d, n) = ({d}, {n})")
-    print(f"   🔴 Secret Primes: p={p}, q={q} (NEVER SHARE!)")
+    print("\nKEY SUMMARY:")
+    print(f"   Public Key  (e, n) = ({e}, {n})")
+    print(f"   Private Key (d, n) = ({d}, {n})")
+    print(f"   Secret Primes: p={p}, q={q} (NEVER SHARE!)")
     
     return (e, n), (d, n), (p, q)
 
@@ -110,7 +110,7 @@ def encrypt(message: int, public_key: Tuple[int, int]) -> int:
     """Encrypt a message using RSA public key."""
     e, n = public_key
     if message >= n:
-        raise ValueError(f"Message {message} terlalu besar! Harus < {n}")
+        raise ValueError(f"Message {message} is too large! Must be < {n}")
     # Ciphertext = message^e mod n
     ciphertext = pow(message, e, n)
     return ciphertext
@@ -137,7 +137,7 @@ def numbers_to_text(numbers: list) -> str:
 def demo_rsa_encryption():
     """Demonstrate RSA encryption and decryption."""
     print("\n" + "=" * 60)
-    print("🔐 RSA ENCRYPTION DEMONSTRATION")
+    print("RSA ENCRYPTION DEMONSTRATION")
     print("=" * 60)
     
     # Generate keys (using small primes for demonstration)
@@ -145,7 +145,7 @@ def demo_rsa_encryption():
     
     # Encrypt a simple message (number)
     print("\n" + "-" * 50)
-    print("📨 ENCRYPTION TEST (Single Number)")
+    print("ENCRYPTION TEST (Single Number)")
     print("-" * 50)
     
     original_message = 42
@@ -158,11 +158,11 @@ def demo_rsa_encryption():
     print(f"Decrypted: {decrypted}")
     
     assert original_message == decrypted, "Decryption failed!"
-    print("✅ Encryption/Decryption successful!")
+    print("[OK] Encryption/Decryption successful!")
     
     # Encrypt text message
     print("\n" + "-" * 50)
-    print("📨 ENCRYPTION TEST (Text Message)")
+    print("ENCRYPTION TEST (Text Message)")
     print("-" * 50)
     
     text_message = "HI"
@@ -177,7 +177,7 @@ def demo_rsa_encryption():
         if num < n:
             encrypted_numbers.append(encrypt(num, public_key))
         else:
-            print(f"⚠️  Character {num} too large for key, skipping")
+            print(f"[WARN] Character {num} too large for key, skipping")
     print(f"Encrypted numbers: {encrypted_numbers}")
     
     decrypted_numbers = [decrypt(c, private_key) for c in encrypted_numbers]
@@ -192,29 +192,29 @@ def demo_rsa_encryption():
 def explain_rsa_security():
     """Explain why RSA is secure (classically) and its vulnerability."""
     print("\n" + "=" * 60)
-    print("🛡️  KEAMANAN RSA - MENGAPA AMAN?")
+    print("RSA SECURITY - WHY IS IT SECURE?")
     print("=" * 60)
     
     print("""
-    RSA aman karena SULIT memfaktorkan bilangan besar:
+    RSA is secure because it is HARD to factor large numbers:
     
     ┌─────────────────────────────────────────────────────────┐
-    │  PUBLIC:  n = 3233 (produk dari dua prima)              │
+    │  PUBLIC:  n = 3233 (product of two primes)              │
     │  SECRET:  p = 61, q = 53                                │
     │                                                         │
-    │  Jika Anda tahu p dan q → Anda bisa hitung private key! │
-    │  Tapi mencari p dan q dari n sangat SULIT               │
+    │  If you know p and q → You can compute the private key! │
+    │  But finding p and q from n is very HARD                │
     └─────────────────────────────────────────────────────────┘
     
-    Untuk RSA-2048 (standar modern):
-    - n memiliki 2048 bit (617 digit desimal!)
-    - Komputer klasik butuh TRILIUNAN TAHUN untuk memfaktorkan
+    For RSA-2048 (modern standard):
+    - n has 2048 bits (617 decimal digits!)
+    - Classical computers need TRILLIONS OF YEARS to factor
     
-    ⚠️  TAPI dengan QUANTUM COMPUTER menggunakan SHOR'S ALGORITHM:
-    - Faktorisasi bisa dilakukan dalam waktu POLINOMIAL
-    - RSA-2048 bisa dipecahkan dalam HITUNGAN JAM/HARI
+    [!] BUT with QUANTUM COMPUTER using SHOR'S ALGORITHM:
+    - Factorization can be done in POLYNOMIAL time
+    - RSA-2048 can be broken in HOURS/DAYS
     
-    Ini yang disebut "QUANTUM THREAT"! ⚛️
+    This is called the "QUANTUM THREAT"!
     """)
 
 
@@ -227,23 +227,22 @@ if __name__ == "__main__":
     public_key, private_key, primes = demo_rsa_encryption()
     explain_rsa_security()
     
-    # Show the vulnerability
     print("\n" + "=" * 60)
-    print("⚠️  THE QUANTUM THREAT")
+    print("[!] THE QUANTUM THREAT")
     print("=" * 60)
     print(f"""
-    Dalam demo ini, kita gunakan prima kecil:
+    In this demo, we use small primes:
     - p = {primes[0]}
     - q = {primes[1]}
     - n = {primes[0] * primes[1]}
     
-    SIAPA SAJA bisa memfaktorkan {primes[0] * primes[1]} = {primes[0]} × {primes[1]}
+    ANYONE can factor {primes[0] * primes[1]} = {primes[0]} × {primes[1]}
     
-    RSA nyata menggunakan prima 1024+ bit:
-    - n ≈ 10^308 (308 digit!)
-    - Tidak bisa difaktorkan oleh komputer klasik
-    - TAPI quantum computer dengan Shor's Algorithm BISA!
+    Real RSA uses 1024+ bit primes:
+    - n ≈ 10^308 (308 digits!)
+    - Cannot be factored by classical computers
+    - BUT quantum computers with Shor's Algorithm CAN!
     
-    ➡️  Lanjut ke 02_classical_attack.py untuk melihat serangan klasik
-    ➡️  Lanjut ke 03_shors_algorithm.py untuk serangan quantum
+    --> Continue to 02_classical_attack.py to see classical attacks
+    --> Continue to 03_shors_algorithm.py for quantum attacks
     """)

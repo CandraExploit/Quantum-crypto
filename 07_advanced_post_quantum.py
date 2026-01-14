@@ -1,5 +1,5 @@
 """
-🔐 ADVANCED POST-QUANTUM CRYPTOGRAPHY IMPLEMENTATIONS
+ADVANCED POST-QUANTUM CRYPTOGRAPHY IMPLEMENTATIONS
 Educational demonstrations of post-quantum algorithm concepts.
 
 IMPORTANT DISCLAIMER FOR RESEARCHERS:
@@ -23,17 +23,17 @@ import time
 
 
 # ============================================================================
-# LEARNING WITH ERRORS (LWE) - Dasar Lattice Crypto
+# LEARNING WITH ERRORS (LWE) - Foundation of Lattice Crypto
 # ============================================================================
 
 class LWEDemo:
     """
-    Demonstrasi Learning With Errors problem.
+    Demonstration of the Learning With Errors problem.
     
-    LWE adalah dasar dari CRYSTALS-Kyber (standar NIST).
+    LWE is the foundation of CRYSTALS-Kyber (NIST standard).
     
-    Problem: Diberikan A dan b = A·s + e, sulit menemukan s
-    dimana e adalah error kecil (noise).
+    Problem: Given A and b = A·s + e, it is hard to find s
+    where e is a small error (noise).
     """
     
     def __init__(self, n: int = 16, q: int = 251):
@@ -46,7 +46,7 @@ class LWEDemo:
         """
         self.n = n
         self.q = q
-        print(f"🔧 LWE Parameters: n={n}, q={q}")
+        print(f"LWE Parameters: n={n}, q={q}")
     
     def generate_keypair(self) -> Tuple[Tuple, Tuple]:
         """
@@ -56,7 +56,7 @@ class LWEDemo:
             public_key: (A, b = A·s + e)
             private_key: s
         """
-        print("\n🔐 Generating LWE Key Pair...")
+        print("\nGenerating LWE Key Pair...")
         
         # Secret key: random small vector
         s = np.random.randint(-1, 2, size=self.n)  # {-1, 0, 1}
@@ -131,21 +131,21 @@ class LWEDemo:
     def demo(self):
         """Run full LWE demonstration."""
         print("\n" + "=" * 60)
-        print("📚 LEARNING WITH ERRORS (LWE) DEMONSTRATION")
+        print("LEARNING WITH ERRORS (LWE) DEMONSTRATION")
         print("=" * 60)
         print("""
-    LWE adalah problem matematika yang:
-    ✓ SULIT untuk komputer klasik
-    ✓ SULIT untuk komputer quantum (sejauh yang diketahui)
+    LWE is a mathematical problem that is:
+    ✓ HARD for classical computers
+    ✓ HARD for quantum computers (as far as we know)
     
-    Ini adalah dasar dari CRYSTALS-Kyber!
+    This is the foundation of CRYSTALS-Kyber!
         """)
         
         # Generate keys
         public_key, private_key = self.generate_keypair()
         
         # Encrypt and decrypt test
-        print("\n📨 ENCRYPTION TEST:")
+        print("\nENCRYPTION TEST:")
         print("-" * 40)
         
         test_bits = [0, 1, 1, 0, 1]
@@ -158,7 +158,7 @@ class LWEDemo:
             print(f"   Original: {bit} → Encrypted → Decrypted: {decrypted} {'✓' if bit == decrypted else '✗'}")
         
         success = all(o == d for o, d in zip(test_bits, decrypted_bits))
-        print(f"\n{'✅ All bits decrypted correctly!' if success else '❌ Some errors occurred'}")
+        print(f"\n{'[OK] All bits decrypted correctly!' if success else '[X] Some errors occurred'}")
         
         return success
 
@@ -184,7 +184,7 @@ class KyberDemo:
         self.k = k      # Module rank
         self.n = n      # Polynomial degree
         self.q = q      # Modulus
-        print(f"🔧 Kyber-like Parameters: k={k}, n={n}, q={q}")
+        print(f"Kyber-like Parameters: k={k}, n={n}, q={q}")
     
     def keygen(self) -> Tuple[dict, dict]:
         """Generate Kyber-like key pair."""
@@ -293,15 +293,15 @@ class KyberDemo:
     def demo(self):
         """Full Kyber-like demonstration."""
         print("\n" + "=" * 60)
-        print("💎 CRYSTALS-KYBER DEMONSTRATION (Simplified)")
+        print("CRYSTALS-KYBER DEMONSTRATION (Simplified)")
         print("=" * 60)
         print("""
-    CRYSTALS-Kyber adalah standar NIST untuk:
+    CRYSTALS-Kyber is the NIST standard for:
     • Key Encapsulation Mechanism (KEM)
-    • Menggantikan RSA/ECDH untuk key exchange
-    • Aman terhadap quantum computer!
+    • Replacing RSA/ECDH for key exchange
+    • Safe against quantum computers!
     
-    Keamanan berdasarkan Module-LWE problem.
+    Security based on Module-LWE problem.
         """)
         
         # Key generation
@@ -315,11 +315,11 @@ class KyberDemo:
         
         # Verify
         print("\n" + "-" * 40)
-        print("🔍 VERIFICATION:")
+        print("VERIFICATION:")
         match = shared_secret_sender == shared_secret_receiver
         print(f"   Sender's secret:   {shared_secret_sender.hex()[:32]}...")
         print(f"   Receiver's secret: {shared_secret_receiver.hex()[:32]}...")
-        print(f"   {'✅ Secrets match! Key exchange successful!' if match else '❌ Secrets do not match!'}")
+        print(f"   {'[OK] Secrets match! Key exchange successful!' if match else '[X] Secrets do not match!'}")
         
         return match
 
@@ -347,7 +347,7 @@ class SPHINCSDemo:
         self.n = n
         self.w = w
         self.h = h
-        print(f"🔧 SPHINCS+-like Parameters: n={n}, w={w}, h={h}")
+        print(f"SPHINCS+-like Parameters: n={n}, w={w}, h={h}")
     
     def _hash(self, *args) -> bytes:
         """Hash helper."""
@@ -392,7 +392,7 @@ class SPHINCSDemo:
         """
         Create SPHINCS+-like signature.
         """
-        print(f"\n✍️  Signing message: '{message.decode()[:30]}...'")
+        print(f"\nSigning message: '{message.decode()[:30]}...'")
         
         # Hash message
         msg_hash = self._hash(message)
@@ -417,7 +417,7 @@ class SPHINCSDemo:
         """
         Verify SPHINCS+-like signature.
         """
-        print(f"\n🔍 Verifying signature...")
+        print(f"\nVerifying signature...")
         
         msg_hash = self._hash(message)
         
@@ -438,15 +438,15 @@ class SPHINCSDemo:
     def demo(self):
         """Full SPHINCS+ demonstration."""
         print("\n" + "=" * 60)
-        print("🌲 SPHINCS+ DEMONSTRATION (Hash-Based Signatures)")
+        print("SPHINCS+ DEMONSTRATION (Hash-Based Signatures)")
         print("=" * 60)
         print("""
-    SPHINCS+ adalah standar NIST untuk digital signatures:
-    • Berbasis HANYA pada hash functions
-    • Paling konservatif - keamanan paling dipahami
-    • Ukuran signature lebih besar, tapi sangat aman
+    SPHINCS+ is the NIST standard for digital signatures:
+    • Based ONLY on hash functions
+    • Most conservative - security best understood
+    • Larger signature size, but very secure
     
-    Tidak memerlukan asumsi matematika kompleks!
+    Does not require complex mathematical assumptions!
         """)
         
         # Key generation
@@ -460,9 +460,9 @@ class SPHINCSDemo:
         valid = self.verify(public_key, message, signature)
         
         print("\n" + "-" * 40)
-        print("📋 SIGNATURE VERIFICATION:")
+        print("SIGNATURE VERIFICATION:")
         print(f"   Message: '{message.decode()}'")
-        print(f"   Result: {'✅ VALID signature!' if valid else '❌ INVALID signature!'}")
+        print(f"   Result: {'[OK] VALID signature!' if valid else '[X] INVALID signature!'}")
         
         return valid
 
@@ -474,7 +474,7 @@ class SPHINCSDemo:
 def benchmark_algorithms():
     """Benchmark post-quantum algorithms."""
     print("\n" + "=" * 60)
-    print("⏱️  POST-QUANTUM ALGORITHM BENCHMARKS")
+    print("POST-QUANTUM ALGORITHM BENCHMARKS")
     print("=" * 60)
     
     results = []
@@ -505,7 +505,7 @@ def benchmark_algorithms():
     
     # Summary
     print("\n" + "=" * 60)
-    print("📊 BENCHMARK SUMMARY")
+    print("BENCHMARK SUMMARY")
     print("=" * 60)
     print(f"\n{'Algorithm':<20} {'Time (ms)':<15}")
     print("-" * 35)
@@ -514,12 +514,12 @@ def benchmark_algorithms():
     
     print("""
     
-    CATATAN:
-    • Ini adalah implementasi SIMPLIFIED untuk edukasi
-    • Real Kyber/SPHINCS+ lebih kompleks dan dioptimasi
-    • Performance aktual jauh lebih baik dengan library C/Rust
+    NOTE:
+    • This is a SIMPLIFIED implementation for education
+    • Real Kyber/SPHINCS+ is more complex and optimized
+    • Actual performance is much better with C/Rust libraries
     
-    Library Production:
+    Production Libraries:
     • liboqs (Open Quantum Safe)
     • PQClean
     • pqcrypto
@@ -534,5 +534,5 @@ if __name__ == "__main__":
     benchmark_algorithms()
     
     print("\n" + "=" * 60)
-    print("✅ All demonstrations complete!")
+    print("[OK] All demonstrations complete!")
     print("=" * 60)

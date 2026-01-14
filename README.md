@@ -58,21 +58,61 @@ For production post-quantum cryptography, use established libraries such as:
 
 ```
 Quantum-crypto/
-├── 01_rsa_basics.py              # RSA encryption fundamentals
-├── 02_classical_attack.py        # Classical factorization methods (trial division, Pollard's rho)
-├── 03_shors_algorithm.py         # Educational Shor's algorithm simulation
-├── 04_comparison.py              # Classical vs quantum complexity comparison
-├── 05_post_quantum.py            # Introduction to NIST PQC standards
-├── 06_visualizations.py          # Generate threat visualizations
-├── 07_advanced_post_quantum.py   # Simplified LWE, Kyber-like, SPHINCS+-like demos
+├── notebooks/                        # 📓 Interactive Jupyter Notebooks (RECOMMENDED)
+│   ├── 01_RSA_and_Classical_Security.ipynb
+│   ├── 02_Shors_Algorithm_Simulation.ipynb
+│   ├── 03_Quantum_Threat_Visualizations.ipynb
+│   └── 04_Post_Quantum_Standards_NIST.ipynb
+│
+├── 01_rsa_basics.py                  # Legacy Python scripts
+├── 02_classical_attack.py
+├── 03_shors_algorithm.py
+├── 04_comparison.py
+├── 05_post_quantum.py
+├── 06_visualizations.py
+├── 07_advanced_post_quantum.py
+│
 ├── visualizations/
 │   ├── 01_complexity_comparison.png
 │   ├── 02_quantum_speedup.png
 │   ├── 03_threat_timeline.png
 │   ├── 04_algorithm_comparison.png
 │   └── 05_qubit_progress.png
+│
 ├── requirements.txt
 └── README.md
+```
+
+---
+
+## 📓 Jupyter Notebooks (Recommended Learning Path)
+
+For the best learning experience, we recommend using the **interactive Jupyter Notebooks** which combine:
+- **LaTeX-rendered mathematical equations** for rigorous theory
+- **Executable code cells** with inline visualizations
+- **Narrative flow** that guides you through each concept
+
+### Notebook Overview
+
+| Notebook | Topics Covered | Prerequisites |
+|----------|----------------|---------------|
+| **01_RSA_and_Classical_Security** | RSA math (Euler's theorem), key generation, encryption/decryption, trial division attack, Pollard's rho | Basic Python |
+| **02_Shors_Algorithm_Simulation** | Quantum period finding, QFT, Qiskit simulation, classical vs quantum complexity | Notebook 01 |
+| **03_Quantum_Threat_Visualizations** | Threat timelines, complexity comparisons, qubit scaling | Notebook 01-02 |
+| **04_Post_Quantum_Standards_NIST** | ML-KEM, ML-DSA, SLH-DSA, LWE problem, lattice cryptography | Notebook 01-03 |
+
+### Running the Notebooks
+
+```bash
+# Install Jupyter (if not already installed)
+pip install jupyter
+
+# Launch Jupyter Notebook
+jupyter notebook notebooks/
+
+# Or use JupyterLab for a modern interface
+pip install jupyterlab
+jupyter lab notebooks/
 ```
 
 ---
